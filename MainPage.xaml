@@ -3,25 +3,31 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:Learn_a_language"
              x:Class="Learn_a_language.MainPage"
-             Title="Õpi Võõrkeelt">
+             Title="Õpi Võõrkeelt"
+             BackgroundColor="#FFF8E1">
 
-    <StackLayout VerticalOptions="Start" Padding="10">
+    <StackLayout VerticalOptions="Start" Padding="10" Spacing="10">
         <!-- Background Image -->
-        <Image Source="back.jpg" Aspect="AspectFill" HeightRequest="100" />
+        <Image Source="back.jpg" Aspect="AspectFill" HeightRequest="90"  />
 
         <!-- Input Form for Adding/Editing Words -->
-        <StackLayout Padding="20" HorizontalOptions="Center" VerticalOptions="Start">
-            <Label Text="Sisesta sõna" HorizontalOptions="Start" />
-            <Entry Placeholder="Sisesta sõna" Text="{Binding NewWord.Nimetus, Mode=TwoWay}" WidthRequest="300" />
+        <StackLayout Padding="10" HorizontalOptions="Center" VerticalOptions="Start" BackgroundColor="#FFFDE7" 
+                     Spacing="10">
+            <Label Text="Sisesta sõna" HorizontalOptions="Start" FontSize="18" TextColor="#333333" />
+            <Entry Placeholder="Sisesta sõna" Text="{Binding NewWord.Nimetus, Mode=TwoWay}" WidthRequest="300" 
+                   BackgroundColor="#FFF8E1" TextColor="#333333" PlaceholderColor="#BDBDBD" FontSize="16" />
 
-            <Label Text="Sisesta tõlge" HorizontalOptions="Start" />
-            <Entry Placeholder="Sisesta tõlge" Text="{Binding NewWord.Tõlge, Mode=TwoWay}" WidthRequest="300" />
+            <Label Text="Sisesta tõlge" HorizontalOptions="Start" FontSize="18" TextColor="#333333" />
+            <Entry Placeholder="Sisesta tõlge" Text="{Binding NewWord.Tõlge, Mode=TwoWay}" WidthRequest="300" 
+                   BackgroundColor="#FFF8E1" TextColor="#333333" PlaceholderColor="#BDBDBD" FontSize="16" />
 
-            <Label Text="Sisesta selgitus" HorizontalOptions="Start" />
-            <Entry Placeholder="Sisesta selgitus" Text="{Binding NewWord.Selgitus, Mode=TwoWay}" WidthRequest="300" />
+            <Label Text="Sisesta selgitus" HorizontalOptions="Start" FontSize="18" TextColor="#333333" />
+            <Entry Placeholder="Sisesta selgitus" Text="{Binding NewWord.Selgitus, Mode=TwoWay}" WidthRequest="300" 
+                   BackgroundColor="#FFF8E1" TextColor="#333333" PlaceholderColor="#BDBDBD" FontSize="16" />
 
-            <Label Text="Vali kategooria" HorizontalOptions="Start" />
-            <Picker Title="Vali kategooria" SelectedItem="{Binding NewWord.Kategooria, Mode=TwoWay}" WidthRequest="300">
+            <Label Text="Vali kategooria" HorizontalOptions="Start" FontSize="18" TextColor="#333333" />
+            <Picker Title="Vali kategooria" SelectedItem="{Binding NewWord.Kategooria, Mode=TwoWay}" WidthRequest="300" 
+                    BackgroundColor="#FFF8E1" TextColor="#333333">
                 <Picker.Items>
                     <x:String>õppimisel</x:String>
                     <x:String>õpitud</x:String>
@@ -29,32 +35,39 @@
                 </Picker.Items>
             </Picker>
 
-            <Button Text="Salvesta" Command="{Binding SaveWordCommand}" HorizontalOptions="Center" VerticalOptions="Start" WidthRequest="300" />
+            <Button Text="Salvesta" Command="{Binding SaveWordCommand}" HorizontalOptions="Center" WidthRequest="300" 
+                    BackgroundColor="#FFDDE0" TextColor="#333333" CornerRadius="20" FontSize="16" HeightRequest="40" />
         </StackLayout>
 
         <!-- Carousel to Display Words -->
-        <CarouselView x:Name="wordCarousel" ItemsSource="{Binding WordList}" VerticalOptions="Start">
+        <CarouselView x:Name="wordCarousel" ItemsSource="{Binding WordList}" VerticalOptions="Start" HeightRequest="200">
             <CarouselView.ItemTemplate>
                 <DataTemplate>
-                    <StackLayout Padding="10" HorizontalOptions="Center" WidthRequest="300">
-                        <Label Text="{Binding Nimetus}" FontSize="24" HorizontalOptions="Center" />
-                        <Label Text="{Binding Tõlge}" FontSize="18" HorizontalOptions="Center" />
-                        <Label Text="{Binding Selgitus}" FontSize="14" HorizontalOptions="Center" />
-                        <Label Text="{Binding Kategooria}" FontSize="14" HorizontalOptions="Center" />
+                    <Frame BackgroundColor="#FFFDE7" CornerRadius="20" Padding="15" Margin="10" HasShadow="True">
+                        <StackLayout Padding="10" HorizontalOptions="Center" WidthRequest="300">
+                            <Label Text="{Binding Nimetus}" FontSize="24" HorizontalOptions="Center" FontAttributes="Bold" TextColor="#333333" />
+                            <Label Text="{Binding Tõlge}" FontSize="18" HorizontalOptions="Center" TextColor="#333333" />
+                            <Label Text="{Binding Selgitus}" FontSize="14" HorizontalOptions="Center" TextColor="#333333" />
+                            <Label Text="{Binding Kategooria}" FontSize="14" HorizontalOptions="Center" TextColor="#333333" />
 
-                        <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                            <Button Text="Edit" Clicked="EditWordClicked" WidthRequest="100" />
-                            <Button Text="Delete" Clicked="DeleteWordClicked" WidthRequest="100" />
+                            <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Spacing="15">
+                                <Button Text="Edit" Clicked="EditWordClicked" WidthRequest="100" 
+                                        BackgroundColor="#FFDDE0" TextColor="#333333" CornerRadius="20" />
+                                <Button Text="Delete" Clicked="DeleteWordClicked" WidthRequest="100" 
+                                        BackgroundColor="#FFDDE0" TextColor="#333333" CornerRadius="20" />
+                            </StackLayout>
                         </StackLayout>
-                    </StackLayout>
+                    </Frame>
                 </DataTemplate>
             </CarouselView.ItemTemplate>
         </CarouselView>
 
         <!-- Navigation Buttons -->
-        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="10" VerticalOptions="Start">
-            <Button Text="Back" Clicked="BackButtonClicked" WidthRequest="100" />
-            <Button Text="Forward" Clicked="ForwardButtonClicked" WidthRequest="100" />
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="10" VerticalOptions="Start" Spacing="15">
+            <Button Text="Back" Clicked="BackButtonClicked" WidthRequest="100" 
+                    BackgroundColor="#FFDDE0" TextColor="#333333" CornerRadius="20" />
+            <Button Text="Forward" Clicked="ForwardButtonClicked" WidthRequest="100" 
+                    BackgroundColor="#FFDDE0" TextColor="#333333" CornerRadius="20" />
         </StackLayout>
     </StackLayout>
 </ContentPage>
